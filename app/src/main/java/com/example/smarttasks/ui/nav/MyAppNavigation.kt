@@ -8,15 +8,25 @@ import androidx.navigation.compose.rememberNavController
 import com.example.smarttasks.ui.screen.Confirm
 import com.example.smarttasks.ui.screen.Createnewpass
 import com.example.smarttasks.ui.screen.ForgetPassword
+import com.example.smarttasks.ui.screen.Profile
 import com.example.smarttasks.ui.screen.Srceendetail
 import com.example.smarttasks.ui.screen.VerifyCode
+import com.example.smarttasks.ui.screen.Welcome
 import com.example.smarttasks.ui.viewmodel.ForgetPasswordViewModel
 
 @Composable
 fun MyAppNavigation(){
     val navController = rememberNavController()
     val forgetPasswordVM: ForgetPasswordViewModel = viewModel()
-    NavHost(navController = navController, startDestination = Routes.forgerpass, builder = {
+    NavHost(navController = navController, startDestination = Routes.profile, builder = {
+        composable(Routes.welcome) {
+            Welcome(navController)
+        }
+
+        composable(Routes.profile) {
+            Profile { navController.navigate("welcome") }
+        }
+
         composable(Routes.forgerpass){
             ForgetPassword(onNext = {email -> navController.navigate("${Routes.verifycode}/$email")})
         }

@@ -10,4 +10,8 @@ object Routes {
     const val createnewpass = "createnewpass"
 
     const val detail = "detail"
+
+    const val welcome = "welcome"
+
+    const val profile = "profile"
 }
