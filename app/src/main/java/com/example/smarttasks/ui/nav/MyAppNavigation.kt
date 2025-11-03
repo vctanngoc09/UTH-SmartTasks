@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.smarttasks.ui.screen.Confirm
 import com.example.smarttasks.ui.screen.Createnewpass
 import com.example.smarttasks.ui.screen.ForgetPassword
+import com.example.smarttasks.ui.screen.ProductDetail
 import com.example.smarttasks.ui.screen.Profile
 import com.example.smarttasks.ui.screen.Srceendetail
 import com.example.smarttasks.ui.screen.VerifyCode
@@ -18,7 +19,11 @@ import com.example.smarttasks.ui.viewmodel.ForgetPasswordViewModel
 fun MyAppNavigation(){
     val navController = rememberNavController()
     val forgetPasswordVM: ForgetPasswordViewModel = viewModel()
-    NavHost(navController = navController, startDestination = Routes.profile, builder = {
+    NavHost(navController = navController, startDestination = Routes.productdetail, builder = {
+        composable(Routes.productdetail) {
+            ProductDetail(onBack = { navController.navigateUp() })
+        }
+
         composable(Routes.welcome) {
             Welcome(navController)
         }

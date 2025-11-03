@@ -70,5 +70,18 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("com.google.firebase:firebase-analytics")
 
+    // Retrofit core
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+// Chuyển JSON ↔ Kotlin data class
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+// OkHttp (mạng) – Retrofit sử dụng nội bộ
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+// Coroutine + Lifecycle (nếu dùng suspend / ViewModel)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+// Coil để load ảnh từ URL (nếu cần hiển thị hình)
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
 
 }

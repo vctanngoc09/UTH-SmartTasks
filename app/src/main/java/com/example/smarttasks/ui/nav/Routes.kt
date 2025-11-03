@@ -14,4 +14,6 @@ object Routes {
     const val welcome = "welcome"
 
     const val profile = "profile"
+
+    const val productdetail = "productdetail"
 }
