@@ -8,9 +8,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.smarttasks.ui.screen.Confirm
 import com.example.smarttasks.ui.screen.Createnewpass
 import com.example.smarttasks.ui.screen.ForgetPassword
+import com.example.smarttasks.ui.screen.Home
 import com.example.smarttasks.ui.screen.ProductDetail
 import com.example.smarttasks.ui.screen.Profile
 import com.example.smarttasks.ui.screen.Srceendetail
+import com.example.smarttasks.ui.screen.TaskDetailScreen
 import com.example.smarttasks.ui.screen.VerifyCode
 import com.example.smarttasks.ui.screen.Welcome
 import com.example.smarttasks.ui.viewmodel.ForgetPasswordViewModel
@@ -19,7 +21,23 @@ import com.example.smarttasks.ui.viewmodel.ForgetPasswordViewModel
 fun MyAppNavigation(){
     val navController = rememberNavController()
     val forgetPasswordVM: ForgetPasswordViewModel = viewModel()
-    NavHost(navController = navController, startDestination = Routes.productdetail, builder = {
+    NavHost(navController = navController, startDestination = Routes.home, builder = {
+        // --- Home ---
+        composable(Routes.home) {
+            Home(onTaskClick = { id ->
+                navController.navigate("taskDetail/$id")
+            })
+        }
+
+        composable("taskDetail/{id}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id")?.toIntOrNull() ?: return@composable
+            TaskDetailScreen(
+                id = id,
+                onBack = { navController.popBackStack() }
+            )
+        }
+
+
         composable(Routes.productdetail) {
             ProductDetail(onBack = { navController.navigateUp() })
         }

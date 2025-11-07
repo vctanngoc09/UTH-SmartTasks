@@ -16,4 +16,8 @@ object Routes {
     const val profile = "profile"
 
     const val productdetail = "productdetail"
+
+    const val home = "home"
+
+    const val taskdetail = "taskdetail"
 }
